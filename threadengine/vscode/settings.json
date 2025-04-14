@@ -1,0 +1,24 @@
+{
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/dist": true
+    },
+    "json.validate.enable": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "eslint.validate": ["javascript", "javascriptreact", "vue"],
+    "prettier.requireConfig": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "files.associations": {
+      "*.vue": "vue",
+      "*.js": "javascript",
+      "*.json": "json"
+    },
+    "vue.ignoreProjectWarning": true
+  }
+  

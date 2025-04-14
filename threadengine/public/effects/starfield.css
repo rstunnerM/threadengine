@@ -1,0 +1,60 @@
+/* ========== GALAXY STARFIELD BACKGROUND ========== */
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #0d0d1a, #000);
+    background-size: cover;
+    z-index: -2;
+    opacity: 0.95;
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 2px 2px, 3px 3px;
+    animation: stars 200s linear infinite;
+  }
+  
+  @keyframes stars {
+    0% {
+      background-position: 0 0, 0 0;
+    }
+    100% {
+      background-position: -2000px 1000px, 2000px -1000px;
+    }
+  }
+  
+  /* Optional: Galaxy Drift Effect (Toggleable via body.galaxy-enabled) */
+  body.galaxy-enabled {
+    background: radial-gradient(ellipse at center, #0d0d2b, #000011 70%, #000000);
+    background-attachment: fixed;
+    background-size: cover;
+    animation: galaxyDrift 60s ease-in-out infinite;
+  }
+  
+  @keyframes galaxyDrift {
+    0% {
+      background-position: center top;
+    }
+    50% {
+      background-position: center bottom;
+    }
+    100% {
+      background-position: center top;
+    }
+  }
+  

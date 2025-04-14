@@ -1,0 +1,9 @@
+/* components/debugPanel.css */
+#debugAssistantPanel {
+    background: #1c1c1c;
+    color: #00f0ff;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+  }
+  

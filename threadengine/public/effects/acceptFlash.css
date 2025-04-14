@@ -1,0 +1,13 @@
+/* === Canvas Suggestion Acceptance Flash === */
+.gpt-accepted-flash {
+    animation: acceptFlash 1s ease-in-out;
+    background-color: #00f0ff22;
+    border-left: 4px solid #00f0ff;
+    transition: all 0.3s ease;
+  }
+  
+  @keyframes acceptFlash {
+    0% { background-color: #00f0ff44; }
+    100% { background-color: transparent; }
+  }
+  

@@ -1,0 +1,25 @@
+/* ========== TWINKLING STARS LAYER ========== */
+
+.twinkling {
+    background: transparent url("https://raw.githubusercontent.com/JulianLaval/canvas-space/master/images/twinkling.png");
+    opacity: 0.2;
+    animation: twinkleFlow 120s linear infinite;
+    background-repeat: repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+  }
+  
+  /* Twinkling animation */
+  @keyframes twinkleFlow {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  

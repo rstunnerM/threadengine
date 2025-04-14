@@ -1,0 +1,31 @@
+/* ========== COMET TRAIL EFFECT ========== */
+
+.comets {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: transparent url("https://raw.githubusercontent.com/JulianLaval/canvas-space/master/images/comet.png");
+    background-size: contain;
+    background-repeat: repeat;
+    animation: cometStreaks 60s linear infinite;
+    opacity: 0.1;
+    z-index: -1;
+  }
+  
+  /* Comet movement animation */
+  @keyframes cometStreaks {
+    0% {
+      transform: translate(-200%, -200%) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(100vw, 100vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  

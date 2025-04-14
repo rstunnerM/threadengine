@@ -1,0 +1,69 @@
+/* /components/ghostwirePanel.css */
+
+.ghostwire-panel {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: #121212;
+    color: #00f0ff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00f0ff80;
+    font-family: 'Consolas', monospace;
+    width: 320px;
+    z-index: 9999;
+    animation: ghost-pulse 2s infinite ease-in-out;
+    overflow: hidden;
+  }
+  
+  .ghostwire-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0e0e0e;
+    padding: 8px 12px;
+    cursor: move;
+    user-select: none;
+  }
+  
+  .ghostwire-toggle {
+    background: none;
+    border: none;
+    color: #00f0ff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .ghostwire-body {
+    padding: 12px;
+  }
+  
+  .ghostwire-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+  }
+  
+  .ghostwire-buttons button {
+    flex: 1;
+    background: #00f0ff11;
+    border: 1px solid #00f0ff55;
+    color: #00f0ff;
+    padding: 6px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  
+  .ghostwire-buttons button:hover {
+    background: #00f0ff33;
+    border-color: #00f0ff;
+  }
+  
+  @keyframes ghost-pulse {
+    0%, 100% { box-shadow: 0 0 15px #00f0ff80; }
+    50% { box-shadow: 0 0 25px #00f0ff; }
+  }
+  

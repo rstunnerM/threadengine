@@ -1,0 +1,15 @@
+/* ========== GALAXY BACKGROUND DRIFT EFFECT ========== */
+
+body.galaxy-enabled {
+    background: radial-gradient(ellipse at center, #0d0d2b, #000011 70%, #000000);
+    background-attachment: fixed;
+    background-size: cover;
+    animation: galaxyDrift 60s ease-in-out infinite;
+  }
+  
+  @keyframes galaxyDrift {
+    0% { background-position: center top; }
+    50% { background-position: center bottom; }
+    100% { background-position: center top; }
+  }
+  

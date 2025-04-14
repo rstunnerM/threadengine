@@ -1,0 +1,28 @@
+/* ========== SHIMMER ANIMATION (GPT Thinking Style) ========== */
+
+.gpt-shimmer {
+    background: linear-gradient(270deg, #222, #444, #222);
+    background-size: 400% 400%;
+    animation: shimmerSlide 3s ease-in-out infinite;
+    color: #00f0ff;
+    text-align: center;
+    padding: 10px;
+    border: 1px dashed #00f0ff66;
+    border-radius: 8px;
+    margin: 20px;
+    font-weight: bold;
+  }
+  
+  /* Keyframes for the animated shimmer background */
+  @keyframes shimmerSlide {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

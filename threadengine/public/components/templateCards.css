@@ -1,0 +1,81 @@
+/* === Template Cards === */
+.template-card {
+    background: #111;
+    border: 1px solid #333;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 320px;
+    color: #eee;
+    box-shadow: 0 0 16px rgba(0, 255, 200, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .template-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 22px #00ffc8aa;
+  }
+  
+  .template-card iframe {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #444;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+    background: white;
+  }
+  
+  .template-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 0.25rem;
+  }
+  
+  .template-card button {
+    margin-top: 0.75rem;
+    background: #00ffc8;
+    color: #000;
+    border: none;
+    padding: 0.5rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .template-card button:hover {
+    background: #00ffaa;
+  }
+  
+  #templateModal {
+    backdrop-filter: blur(6px);
+    background: rgba(10, 10, 20, 0.95);
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    z-index: 9999;
+    overflow-y: auto;
+  }
+  
+  #templateModal h3 {
+    margin: 0.5rem 0;
+    color: #00ffc8;
+    font-size: 1.2rem;
+  }
+  
+  #templateModal button.close-btn {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: 2px solid #00ffc8;
+    color: #00ffc8;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  

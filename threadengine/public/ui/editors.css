@@ -1,0 +1,33 @@
+/* === Code Editors === */
+#codeEditor {
+    display: none;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  #htmlEditor,
+  #cssEditor,
+  #jsEditor {
+    width: 100%;
+    resize: vertical;
+    min-height: 150px;
+    max-height: 500px;
+    overflow: auto;
+    margin-bottom: 16px;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fefefe;
+  }
+  
+  /* === Debug Output === */
+  #debugOutput {
+    white-space: pre-wrap;
+    background: #111;
+    color: #00f0ff;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-family: Consolas, monospace;
+  }
+  

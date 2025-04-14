@@ -1,0 +1,30 @@
+/* ========== STAR GLOW / SPARKLE LAYER ========== */
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+  
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 2px 2px, 3px 3px;
+  
+    animation: starGlowField 200s linear infinite;
+  }
+  
+  /* Sparkling movement across field */
+  @keyframes starGlowField {
+    0% {
+      background-position: 0 0, 0 0;
+    }
+    100% {
+      background-position: -2000px 1000px, 2000px -1000px;
+    }
+  }
+  
