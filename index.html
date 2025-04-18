@@ -2,282 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ThreadEngine - AI UI Builder</title>
+  <title>ThreadEngine — AI Design OS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ThreadEngine — AI-powered UI Builder for futuristic design and code generation." />
+  <meta name="description" content="ThreadEngine — Design UI, logic, and code in real-time with AI. Welcome to the future of software creation." />
   <link rel="icon" href="/assets/logo/threadengine-favicon.png" type="image/png" />
 
+  <!-- Base Styles -->
   <link rel="stylesheet" href="/base/reset.css" />
   <link rel="stylesheet" href="/base/typography.css" />
   <link rel="stylesheet" href="/theme/futureGlow.css" />
   <script src="https://unpkg.com/scrollreveal"></script>
 </head>
+
 <body class="landing" data-theme="dark">
   <div class="landing-container">
+    <!-- ⬆ Header -->
     <header class="landing-header">
       <img src="/assets/logo/threadengine-horizontal.png" alt="ThreadEngine Logo" class="logo" />
-      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
-      <span class="mic-icon" title="Voice control active">🎙️</span>
+      <div class="utility-panel">
+        <button class="nav-toggle">☰</button>
+        <span class="mic-icon">🎙️</span>
+        <ai-mode-toggle></ai-mode-toggle>
+        <locale-toggle></locale-toggle>
+        <cloud-status-indicator></cloud-status-indicator>
+      </div>
       <nav class="nav-buttons">
         <a href="#features">Features</a>
+        <a href="#canvas">Canvas</a>
         <a href="#demo">Demo</a>
         <a href="#get-started" class="primary-btn">Get Started</a>
       </nav>
     </header>
 
+    <!-- 🧠 Hero Area -->
     <section class="hero">
-      <h1>Design Faster with AI ✨</h1>
-      <p>The AI-powered UI builder for creators, coders, and innovators. Generate and modify UIs instantly with natural language.</p>
-      <a href="#canvas" class="cta-button">Launch Builder</a>
+      <h1>Welcome to ThreadEngine 🚀</h1>
+      <p>Real-time AI-powered UI + Logic Builder. Speak or type your next system into existence.</p>
+      <command-bar placeholder="Try: ‘Generate dashboard with dark mode + charts’"></command-bar>
+      <a href="#canvas" class="cta-button">Launch AI Builder</a>
     </section>
 
+    <!-- 🎨 Canvas -->
     <section id="canvas" class="builder-canvas">
-      <h2>🎨 ThreadEngine Canvas</h2>
-      <p class="canvas-info">Start designing your UI here. This is the interactive workspace powered by AI.</p>
+      <h2>🖌️ Interactive Design Canvas</h2>
+      <p class="canvas-info">Mount AI-assisted UI here. Modular workspaces below.</p>
       <div id="vueCanvasMount"></div>
-      <script type="module">
-        import { createApp } from 'vue'
-        import CanvasWorkspace from '/components/CanvasWorkspace.vue'
-        createApp(CanvasWorkspace).mount('#vueCanvasMount')
-      </script>
+      <div id="vueSettingsMount"></div>
+      <div id="engineLoaderMount"></div>
     </section>
 
+    <!-- ⚙️ Vue Component Mounts -->
+    <script type="module">
+      import { createApp } from 'vue'
+      import CanvasWorkspace from '/components/CanvasWorkspace.vue'
+      import SettingsPanel from '/components/SettingsPanel.vue'
+      import EngineLoader from '/components/EngineLoader.vue'
+
+      createApp(CanvasWorkspace).mount('#vueCanvasMount')
+      createApp(SettingsPanel).mount('#vueSettingsMount')
+      createApp(EngineLoader).mount('#engineLoaderMount')
+    </script>
+
+    <!-- 🚀 Features -->
     <section id="features" class="features">
       <h2>What ThreadEngine Can Do</h2>
       <ul class="feature-grid">
-        <li>⚡ Instant UI Generation</li>
-        <li>🧠 Modifier History with AI Recall</li>
-        <li>🎨 Real-time Design Canvas</li>
-        <li>💻 Code-View with HTML/CSS/JS Sync</li>
-        <li>🛰️ Visual DevMode Panel (Vue powered)</li>
-        <li>📦 Cloud-Connected Asset Pipeline</li>
+        <li>⚡ Instant UI & Logic Generation</li>
+        <li>🧠 Modifier Recall via AI History</li>
+        <li>🛰️ Real-Time Design Canvas (Vue)</li>
+        <li>🔄 AI ↔ Code Synchronization</li>
+        <li>📦 Plugin-Based Engine Loader</li>
+        <li>📜 Voice-to-ThreadLang Interpreter</li>
+        <li>🧪 DevMode Visual Trace Overlay</li>
       </ul>
     </section>
 
+    <!-- 💡 Demo Preview -->
     <section id="demo" class="demo-preview">
-      <h2>Live Demo</h2>
+      <h2>Live Demo Preview</h2>
       <div class="demo-window">
-        <img src="/assets/screens/demo-preview.png" alt="App Preview Screenshot" />
+        <img src="/assets/screens/demo-preview.png" alt="ThreadEngine UI Preview" />
       </div>
     </section>
-    <div id="vueSettingsMount"></div>
-    <script type="module">
-      import { createApp } from 'vue'
-      import SettingsPanel from '/components/SettingsPanel.vue'
-    
-      createApp(SettingsPanel).mount('#vueSettingsMount')
-    </script>
-    
+
+    <!-- 📜 Voice Log -->
     <div class="voice-log-container">
-      <p class="voice-label">🎤 Last command heard:</p>
+      <p class="voice-label">🎧 Last voice command:</p>
       <p class="voice-log">…</p>
     </div>
 
+    <!-- 📎 Footer -->
     <footer class="landing-footer">
-      <p>&copy; 2025 ThreadEngine. Built with 💜 for designers + developers.</p>
+      <p>&copy; 2025 ThreadEngine. Built for the builders of tomorrow.</p>
     </footer>
   </div>
 
-  <style>
-    :root {
-      --color-bg: #0e0d2b;
-      --color-surface: #17162f;
-      --color-primary: #6a00f4;
-      --color-accent: #ff67f6;
-      --color-text: #e7e9ff;
-      --color-subtext: #a1a4cc;
-      --color-glow: #b387ff;
-    }
-    body.landing {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(ellipse at center, var(--color-bg) 0%, #090818 100%);
-      color: var(--color-text);
-      margin: 0;
-      overflow-x: hidden;
-    }
-    .landing-container {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .landing-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    .nav-toggle {
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      color: var(--color-glow);
-      display: none;
-      cursor: pointer;
-    }
-    .nav-buttons {
-      display: flex;
-      gap: 1rem;
-    }
-    .nav-buttons a {
-      color: var(--color-glow);
-      text-decoration: none;
-    }
-    .nav-buttons .primary-btn {
-      background: var(--color-primary);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-    }
-    .hero {
-      text-align: center;
-      margin-top: 3rem;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--color-accent);
-    }
-    .cta-button {
-      margin-top: 2rem;
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: var(--color-primary);
-      color: #fff;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 0 12px var(--color-glow);
-    }
-    .features {
-      margin-top: 4rem;
-    }
-    .features h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      list-style: none;
-      padding: 0;
-    }
-    .feature-grid li {
-      background: var(--color-surface);
-      padding: 1.25rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    .demo-preview {
-      margin-top: 5rem;
-      text-align: center;
-    }
-    .demo-window img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
-    .landing-footer {
-      text-align: center;
-      padding: 3rem 0 1rem;
-      font-size: 0.875rem;
-      color: var(--color-subtext);
-    }
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
-      .nav-buttons {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        margin-top: 1rem;
-        gap: 0.75rem;
-      }
-      .nav-buttons.show {
-        display: flex;
-      }
-    }
-    .mic-icon {
-      font-size: 1.25rem;
-      margin-left: 0.75rem;
-      color: var(--color-glow);
-      display: inline-block;
-      vertical-align: middle;
-      animation: pulse 2s infinite ease-in-out;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-    .voice-log-container {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      color: var(--color-subtext);
-    }
-    .voice-log {
-      font-weight: bold;
-      color: var(--color-text);
-      margin-top: 0.25rem;
-    }
-    .builder-canvas {
-      margin-top: 5rem;
-      text-align: center;
-      padding: 2rem;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.01), rgba(255,255,255,0));
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .canvas-info {
-      color: var(--color-subtext);
-      margin-bottom: 1rem;
-    }
-  </style>
-
+  <!-- 🎛 Scroll Reveal + Interactivity -->
   <script>
-    ScrollReveal().reveal('.hero h1', { delay: 200, origin: 'bottom', distance: '30px', duration: 800 });
-    ScrollReveal().reveal('.hero p', { delay: 400, origin: 'bottom', distance: '30px', duration: 800 });
-    ScrollReveal().reveal('.cta-button', { delay: 600, origin: 'bottom', distance: '20px', duration: 700 });
-    ScrollReveal().reveal('.feature-grid li', { interval: 200, origin: 'bottom', distance: '20px', duration: 700 });
-    ScrollReveal().reveal('.demo-window', { delay: 200, origin: 'bottom', distance: '30px', duration: 800 });
+    ScrollReveal().reveal('.hero h1', { delay: 100, origin: 'bottom', distance: '30px' });
+    ScrollReveal().reveal('.feature-grid li', { interval: 150, origin: 'bottom', distance: '20px' });
 
     const navToggleBtn = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav-buttons');
     navToggleBtn.addEventListener('click', () => nav.classList.toggle('show'));
 
-    document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'm') {
-        nav.classList.toggle('show');
-      }
-    });
-
     if ('webkitSpeechRecognition' in window) {
       const recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
-      recognition.interimResults = false;
       recognition.lang = 'en-US';
 
-      recognition.onresult = function(event) {
-        const transcriptBox = document.querySelector('.voice-log');
-        for (let i = event.resultIndex; i < event.results.length; ++i) {
+      recognition.onresult = (event) => {
+        const log = document.querySelector('.voice-log');
+        for (let i = event.resultIndex; i < event.results.length; i++) {
           if (event.results[i].isFinal) {
-            const transcript = event.results[i][0].transcript.trim().toLowerCase();
-            console.log('[🎤 Transcript]', transcript);
-            if (transcriptBox) transcriptBox.innerText = transcript;
-            if (transcript.includes('toggle menu') || transcript.includes('open menu')) {
-              nav.classList.toggle('show');
-            }
+            const transcript = event.results[i][0].transcript.trim();
+            log.innerText = transcript;
+            if (transcript.toLowerCase().includes('toggle menu')) nav.classList.toggle('show');
           }
         }
       };
-
-      recognition.onerror = function(e) {
-        console.warn('Speech recognition error:', e.error);
-      };
-
+      recognition.onerror = e => console.warn('Speech error:', e.error);
       recognition.start();
     }
   </script>

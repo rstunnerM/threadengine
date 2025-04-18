@@ -12,7 +12,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "electron": "electron .",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "release": "standard-version"
   },
   "author": "Stunner Mendoza",
   "dependencies": {
@@ -46,7 +47,8 @@
     "concurrently": "^9.1.2",
     "nodemon": "^3.1.9",
     "vite": "^6.2.6",
-    "electron-builder": "^24.14.1"
+    "electron-builder": "^24.14.1",
+    "standard-version": "^9.5.0"
   },
   "build": {
     "appId": "com.threadengine.app",
@@ -58,13 +60,6 @@
     ],
     "win": {
       "target": "nsis"
-    },
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "YOUR_GITHUB_USERNAME",
-        "repo": "YOUR_REPO_NAME"
-      }
-    ]
+    }
   }
 }
