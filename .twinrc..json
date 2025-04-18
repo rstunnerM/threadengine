@@ -1,0 +1,13 @@
+{
+    "enabled": true,
+    "defaultAgents": [
+      "UIBuilder",
+      "BatchCommander",
+      "GitPilot",
+      "DocScribe",
+      "DebugSentinel"
+    ],
+    "logActivity": true,
+    "intentWatch": true
+  }
+  
