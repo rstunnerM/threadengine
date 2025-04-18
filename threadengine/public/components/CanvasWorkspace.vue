@@ -1,33 +1,29 @@
-import TemplatePickerPanel from './TemplatePickerPanel.vue'
-
 <template>
   <div class="canvas-wrapper">
     <div class="canvas-area" contenteditable="true" ref="editor">
-      <!-- Editable design area -->
-      <p class="placeholder">Start typing or use ✨ AI to generate layout here...</p>
+      <p class="placeholder">Start typing or use ✨ AI to generate layout here…</p>
     </div>
 
+    <!-- 🎤 Voice / Prompt -->
     <div class="ai-control-bar">
-      <input v-model="userPrompt" placeholder="Describe what to generate…" />
+      <input v-model="userPrompt" placeholder="Describe UI or layout logic…" />
       <button @click="generateUI">✨ Generate</button>
+      <button @click="toggleSettings" class="settings-btn">⚙️</button>
     </div>
 
-    <!-- 🧠 Reference Tags -->
+    <!-- 🧩 Template Picker -->
+    <template-picker-panel />
+
+    <!-- 🧠 AI + Plugin Context -->
     <div class="canvas-resources">
-      <p class="tag">🧠 GPT-4</p>
-      <p class="tag">🌥️ Cloudinary</p>
-      <p class="tag">🧪 CodeMirror</p>
-      <p class="tag">🧰 Multer</p>
-      <p class="tag">🔧 Sharp</p>
-      <p class="tag">🖼️ Replicate AI</p>
+      <p class="tag" v-for="tag in techTags" :key="tag">🔹 {{ tag }}</p>
     </div>
 
-    <!-- 🐞 Toggle Debug Panel -->
+    <!-- 🐞 Debug Console Toggle -->
     <button @click="showConsole = !showConsole" class="toggle-console">
-      {{ showConsole ? '🙈 Hide Debug' : '🐞 Show Debug Console' }}
+      {{ showConsole ? '🙈 Hide Debug Console' : '🐞 Show Debug Console' }}
     </button>
 
-    <!-- 🧪 Animated Debug Panel -->
     <transition name="console-slide">
       <DevConsolePanel v-if="showConsole" />
     </transition>
@@ -37,25 +33,45 @@ import TemplatePickerPanel from './TemplatePickerPanel.vue'
 <script setup>
 import { ref, onMounted } from 'vue'
 import DevConsolePanel from './DevConsolePanel.vue'
+import TemplatePickerPanel from './TemplatePickerPanel.vue'
 
 const editor = ref(null)
 const userPrompt = ref('')
-const showConsole = ref(true)
+const showConsole = ref(false)
+const showSettings = ref(false)
+
+const techTags = [
+  'GPT-4',
+  'Cloudinary',
+  'CodeMirror',
+  'Multer',
+  'Sharp',
+  'Replicate AI',
+  'ThreadLang ⊕'
+]
 
 onMounted(() => {
   editor.value?.focus()
 })
 
 const generateUI = async () => {
-  if (!userPrompt.value.trim()) return
+  const prompt = userPrompt.value.trim()
+  if (!prompt) return
+
   const response = await fetch('/api/generate-ui', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ prompt: userPrompt.value }),
+    body: JSON.stringify({ prompt })
   })
+
   const { html } = await response.json()
   if (editor.value) editor.value.innerHTML = html
-  console.log('✅ Generated:', html)
+  console.log('🧠 [UI Generated]:', prompt, '\n➡️ Output:', html)
+}
+
+const toggleSettings = () => {
+  showSettings.value = !showSettings.value
+  console.log('⚙️ Settings toggled:', showSettings.value)
 }
 </script>
 
@@ -79,14 +95,14 @@ const generateUI = async () => {
 }
 .ai-control-bar {
   display: flex;
-  justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+  align-items: center;
 }
 .ai-control-bar input {
+  flex: 1;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  flex: 1;
   background: #1a1c2c;
   color: var(--color-text);
   border: 1px solid var(--color-surface);
@@ -99,13 +115,18 @@ const generateUI = async () => {
   cursor: pointer;
   box-shadow: 0 0 6px var(--color-glow);
 }
+.settings-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-glow);
+  color: var(--color-glow);
+}
 .canvas-resources {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--color-glow);
   opacity: 0.75;
 }
@@ -117,7 +138,7 @@ const generateUI = async () => {
 }
 .toggle-console {
   display: block;
-  margin: 1.5rem auto;
+  margin: 2rem auto 0;
   background: transparent;
   color: var(--color-glow);
   border: none;
@@ -125,10 +146,10 @@ const generateUI = async () => {
   cursor: pointer;
 }
 
-/* 🔄 Animation Styles */
+/* 🎬 Animations */
 .console-slide-enter-active,
 .console-slide-leave-active {
-  transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 .console-slide-enter-from,
 .console-slide-leave-to {
