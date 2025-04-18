@@ -1,0 +1,27 @@
+[
+    {
+      "id": "gpt4-ui",
+      "name": "UI Synthesizer (GPT-4)",
+      "command": "node ./models/uiSynth.js",
+      "lang": "js",
+      "autoStart": true,
+      "description": "Generates layout/UI components from user prompts"
+    },
+    {
+      "id": "replicate-img",
+      "name": "Image Gen (Replicate)",
+      "command": "node ./models/imageGen.js",
+      "lang": "js",
+      "autoStart": false,
+      "description": "Runs Replicate image model"
+    },
+    {
+      "id": "local-gpt-debug",
+      "name": "Local GPT Debugger",
+      "command": "node ./models/localDebug.js",
+      "lang": "js",
+      "autoStart": false,
+      "description": "Handles logic inspection + trace debug output"
+    }
+  ]
+  

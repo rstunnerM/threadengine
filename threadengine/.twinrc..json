@@ -1,0 +1,61 @@
+// ThreadEngine/twin-core.js
+// 🎛️ Twin AI Orchestrator for Model + Intent Handling
+
+import fs from 'fs'
+import path from 'path'
+import { spawn } from 'child_process'
+import chalk from 'chalk'
+import dotenv from 'dotenv'
+dotenv.config()
+
+const modelManifestPath = path.resolve('./ThreadEngine/models.config.json')
+const twinStateLog = path.resolve('./ThreadEngine/.twin-state.json')
+
+const log = (msg, level = 'info') => {
+  const prefix = {
+    info: chalk.cyan('[twin]'),
+    success: chalk.green('[✓]'),
+    warn: chalk.yellow('[!]'),
+    error: chalk.red('[✖]')
+  }[level]
+  console.log(`${prefix} ${msg}`)
+}
+
+const loadModels = () => {
+  if (!fs.existsSync(modelManifestPath)) {
+    log('No models.config.json found.', 'warn')
+    return []
+  }
+  const raw = fs.readFileSync(modelManifestPath)
+  try {
+    return JSON.parse(raw)
+  } catch (err) {
+    log('Malformed models.config.json', 'error')
+    return []
+  }
+}
+
+const runModels = async () => {
+  const models = loadModels()
+  if (!models.length) return log('No models to run', 'warn')
+
+  const twinState = {}
+
+  for (const model of models) {
+    const { name, entry, args = [] } = model
+    const fullPath = path.resolve('./', entry)
+    if (!fs.existsSync(fullPath)) {
+      log(`Model "${name}" entry not found at ${entry}`, 'warn')
+      continue
+    }
+
+    log(`Launching model: ${name}`)
+    const proc = spawn('node', [fullPath, ...args], { stdio: 'inherit' })
+    twinState[name] = { pid: proc.pid, status: 'running', entry }
+  }
+
+  fs.writeFileSync(twinStateLog, JSON.stringify(twinState, null, 2))
+  log('All models launched + twin-state logged ✅', 'success')
+}
+
+runModels()
