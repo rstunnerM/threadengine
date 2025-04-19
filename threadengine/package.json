@@ -43,6 +43,7 @@
     "prettier": "^3.5.3",
     "replicate": "^1.0.1",
     "sharp": "^0.34.1",
+    "simple-update-notifier": "^2.0.0",
     "vue": "^3.5.13",
     "web-streams-polyfill": "^4.1.0"
   },
